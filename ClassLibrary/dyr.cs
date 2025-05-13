@@ -25,5 +25,10 @@ namespace ClassLibrary
             Køn = køn;
             Fødselsaar = fødselsaar;
         }
+        public override string ToString()
+        {
+            return $"Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Køn: {Køn}, Fødselsaar {Fødselsaar} ";
+        }
+
     }
 }
