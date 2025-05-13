@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    internal class Dyr
+    public class Dyr
     {
         public string Art { get; set; }
         public string Race { get; set; }
