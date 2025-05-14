@@ -27,6 +27,9 @@ namespace ConsoleApp
                 Console.WriteLine("2: Administrer Medarbejder og Kunder");
                 Thread.Sleep(200);
 
+                Console.WriteLine("3: se alle dyr");
+                Thread.Sleep(200);
+
                 int valg = Convert.ToInt32(Console.ReadLine());
 
                 switch(valg){
@@ -47,8 +50,6 @@ namespace ConsoleApp
                        
 
                         break;
-
-
                     case 2:
 
                         Console.WriteLine("1: tiføj medarbejder");
