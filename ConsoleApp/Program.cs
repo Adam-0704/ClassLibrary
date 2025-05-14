@@ -19,7 +19,7 @@ namespace ConsoleApp
 
 
                 Console.WriteLine("Vælg en af valmulighederne");
-                Thread.Sleep(1000);
+                Thread.Sleep(700);
 
                 Console.WriteLine("1: se alle brugere");
                 Thread.Sleep(200);
