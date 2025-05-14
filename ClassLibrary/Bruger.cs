@@ -10,17 +10,19 @@ namespace ClassLibrary
     {
         public string Navn { get; set; }
         public string Email { get; set; }
-        
+        public string Telefonnummer { get; set; }
 
-        public Bruger(string navn, string email)
+
+        public Bruger(string navn, string email, string telefonnummer)
         {
             Navn = navn;
             Email = email;
+            Telefonnummer = telefonnummer;
         }
 
         public virtual void VisInfo()
         {
-            Console.WriteLine($"Navn: {Navn}, Email: {Email}");
+            Console.WriteLine($"Navn: {Navn}, Email: {Email}, Telefonnummer {Telefonnummer}");
         }
     }
 
@@ -29,14 +31,14 @@ namespace ClassLibrary
     public class Medarbejder : Bruger
     {
 
-        public Medarbejder(string navn, string email) : base(navn, email)
+        public Medarbejder(string navn, string email, string telefonnummer) : base(navn, email, telefonnummer)
         {
 
         }
 
         public override void VisInfo()
         {
-            Console.WriteLine($"[Medarbejder] Navn: {Navn},Email: {Email}");
+            Console.WriteLine($"[Medarbejder] Navn: {Navn},Email: {Email}, Telefonnummer: {Telefonnummer}");
         }
 
     }
@@ -44,13 +46,13 @@ namespace ClassLibrary
     public class Kunde : Bruger
     {
 
-        public Kunde(string navn, string email) : base(navn, email)
+        public Kunde(string navn, string email,string telefonnummer) : base(navn, email, telefonnummer)
         {
 
         }
         public override void VisInfo()
         {
-            Console.WriteLine($"[Kunde] Navn: {Navn},Email: {Email}");
+            Console.WriteLine($"[Kunde] Navn: {Navn},Email: {Email}, Telefonnummer: {Telefonnummer}");
         }
 
 

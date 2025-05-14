@@ -19,7 +19,7 @@ namespace ConsoleApp
 
 
                 Console.WriteLine("Vælg en af valmulighederne");
-                Thread.Sleep(1000);
+                Thread.Sleep(700);
 
                 Console.WriteLine("1: se alle brugere");
                 Thread.Sleep(200);
@@ -65,9 +65,11 @@ namespace ConsoleApp
                                 string navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
                                 string email = Console.ReadLine();
+                                Console.Write("Indtast telefonnummer: ");
+                                string telefonnummer = Console.ReadLine();
 
-                                Medarbejder M = new Medarbejder(navn, email);
-                                BrugerRepo.TilføjBruger(M);
+                                Medarbejder medarbejder = new Medarbejder(navn, email, telefonnummer);
+                                BrugerRepo.TilføjBruger(medarbejder);
                                 Console.WriteLine("Medarbejder tilføjet.");
                                 break;
 
@@ -77,8 +79,10 @@ namespace ConsoleApp
                                 string Navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
                                 string Email = Console.ReadLine();
+                                Console.Write("Indtast telefonnummer: ");
+                                string Telefonnummer = Console.ReadLine();
 
-                                Kunde kunde1 = new Kunde(Navn, Email);
+                                Kunde kunde1 = new Kunde(Navn, Email,Telefonnummer);
                                 BrugerRepo.TilføjBruger(kunde1);
                                 Console.WriteLine("Kunde tilføjet.");
                                 break;
