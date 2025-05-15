@@ -114,7 +114,7 @@ namespace ConsoleApp
                     case 4:
 
                         bool Run = true;
-                        while (Run ==true)
+                        while (Run == true)
                         {
                             Console.WriteLine("\nVælg en af følgende muligheder");
 
