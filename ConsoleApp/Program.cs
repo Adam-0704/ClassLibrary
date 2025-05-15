@@ -1,24 +1,30 @@
-﻿using System.Xml.Schema;
+﻿using System.Reflection.Metadata;
+using System;
+using System.Xml.Schema;
 using ClassLibrary;
 using ClassLibrary.repository;
 
 namespace ConsoleApp
 {
     internal class Program
+
     {
+        static ActivityRepository AktivitetRepo= new ActivityRepository();
+
         static BrugerRepository BrugerRepo = new BrugerRepository();
         static void Main(string[] args)
         {
-
+            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "kom ud og år en masse motion og socialisering med andre hunde og mennesker.God mulighed for at styrke deres adfærd og energi.")) ;
+            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
+            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
 
             Console.WriteLine("Velkommen til Roskilde Dyreinternat");
-
             bool running = true;
 
             while(running == true){
 
 
-                Console.WriteLine("Vælg en af valmulighederne");
+                Console.WriteLine("\nVælg en af valmulighederne");
                 Thread.Sleep(700);
 
                 Console.WriteLine("1: se alle brugere");
@@ -27,7 +33,10 @@ namespace ConsoleApp
                 Console.WriteLine("2: Administrer Medarbejder og Kunder");
                 Thread.Sleep(200);
 
-                Console.WriteLine("3: se alle dyr");
+                Console.WriteLine("3: se alle Aktiviter");
+                Thread.Sleep(200);
+
+                Console.WriteLine("4: tilmeld aktiviteter");
                 Thread.Sleep(200);
 
                 int valg = Convert.ToInt32(Console.ReadLine());
@@ -92,8 +101,103 @@ namespace ConsoleApp
 
 
                       break;
+                    case 3:
+
+                        foreach (var item in AktivitetRepo.getAll())
+                        {
+                            item.VisInfo();
+                        }
 
 
+                        break;
+
+                    case 4:
+
+                        bool Run = true;
+                        while (Run ==true)
+                        {
+                            Console.WriteLine("\nVælg en af følgende muligheder");
+
+                            foreach (var item in AktivitetRepo.getAll())
+                            {
+                                item.VisInfo();
+
+                            }
+                            Console.WriteLine("\nindtast enten \n1 \n2 \n3");
+
+                            int Indtast = Convert.ToInt32(Console.ReadLine());
+                            if (BrugerRepo.ErTom())
+                            {
+                                Console.WriteLine("lav først en brugere");
+
+                                Run = false;
+                            }
+                            else if (Indtast == 1)
+                            {
+
+                                var brugere = BrugerRepo.HentAlleBrugere();
+
+                                Console.WriteLine("Vælg en bruger:");
+                                int i = 1;
+                                foreach (var item in brugere)
+                                    Console.WriteLine($"{i++}: {item.Navn}");
+
+                                int vælger = Convert.ToInt32(Console.ReadLine());
+                                var valgtBruger = brugere[vælger - 1];
+
+                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Fælles HundeLufting]");
+
+
+                                Run = false;
+                            }
+                            else if (Indtast == 2)
+                            {
+
+                                var brugere = BrugerRepo.HentAlleBrugere();
+
+                                Console.WriteLine("Vælg en bruger:");
+                                int i = 1;
+                                foreach (var item in brugere)
+                                    Console.WriteLine($"{i++}: {item.Navn}");
+
+                                int vælger = Convert.ToInt32(Console.ReadLine());
+                                var valgtBruger = brugere[vælger - 1];
+
+                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Løb i HamsterHjul]");
+
+                                Run = false;
+                            }
+                            else if (Indtast == 3)
+                            {
+
+                                var brugere = BrugerRepo.HentAlleBrugere();
+
+                                Console.WriteLine("Vælg en bruger:");
+                                int i = 1;
+                                foreach (var item in brugere)
+                                    Console.WriteLine($"{i++}: {item.Navn}");
+
+                                int vælger = Convert.ToInt32(Console.ReadLine());
+                                var valgtBruger = brugere[vælger - 1];
+
+                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Katten efter Mussen]");
+
+
+                                Run = false;
+                            }
+                            else
+                            {
+
+                                Console.WriteLine("indtast venligst et af de givende tal");
+
+                            }
+
+
+                        }
+
+                        break;
+
+                     
                 }
            
 
