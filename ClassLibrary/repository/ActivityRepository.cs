@@ -9,19 +9,21 @@ namespace ClassLibrary.repository
 {
     public class ActivityRepository
     {
-        private List<Activity> Aktiviteter = new List<Activity>();
+        private List<Activity> aktiviteter = new List<Activity>();
 
-        public void TilføjAktivitet(Activity Aktivitet)
+        public void TilføjAktivitet(Activity aktivitet)
         {
-            Aktiviteter.Add(Aktivitet);
+            aktiviteter.Add(aktivitet);
         }
 
         public List<Activity> getAll()
         {
-            return Aktiviteter;
+            return aktiviteter;
         }
 
-
-
+        public bool ErTom()
+        {
+            return aktiviteter.Count == 0;
+        }
     }
 }
