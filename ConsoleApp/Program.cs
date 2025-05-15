@@ -39,6 +39,21 @@ namespace ConsoleApp
                 Console.WriteLine("4: tilmeld aktiviteter");
                 Thread.Sleep(200);
 
+                Console.WriteLine("5: se alle dyr");
+                Thread.Sleep(200);
+
+                Console.WriteLine("6: administre dyr");
+                Thread.Sleep(200);
+
+                Console.WriteLine("7: Book en tid");
+                Thread.Sleep(200);
+
+                Console.WriteLine("8: se og redigere Blogindlæg");
+                Thread.Sleep(200);
+
+
+
+
                 int valg = Convert.ToInt32(Console.ReadLine());
 
                 switch(valg){
