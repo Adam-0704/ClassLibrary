@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.repository
 {
-    public class DyrRepository
+   public class DyrRepository
     {
         private List<Dyr> dyrListe = new List<Dyr>();
 

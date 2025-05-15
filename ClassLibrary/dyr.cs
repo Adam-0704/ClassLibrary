@@ -14,9 +14,10 @@ namespace ClassLibrary
         public string Chipnummer { get; set; }
         public string Køn { get; set; }
         public int Fødselsaar { get; set; }
+        public string Farve { get; set; }
 
         // Constructor
-        public Dyr(string art, string race, string navn, string chipnummer, string køn, int fødselsaar)
+        public Dyr(string art, string race, string navn, string chipnummer, string køn, int fødselsaar, string farve)
         {
             Art = art;
             Race = race;
@@ -24,10 +25,11 @@ namespace ClassLibrary
             Chipnummer = chipnummer;
             Køn = køn;
             Fødselsaar = fødselsaar;
+            Farve = farve;
         }
         public override string ToString()
         {
-            return $"Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Køn: {Køn}, Fødselsaar {Fødselsaar} ";
+            return $"Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Køn: {Køn}, Fødselsaar {Fødselsaar}, Farve {Farve} ";
         }
 
     }

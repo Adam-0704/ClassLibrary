@@ -10,7 +10,7 @@ namespace ConsoleApp
 
     {
         static ActivityRepository AktivitetRepo= new ActivityRepository();
-
+        static DyrRepository DyrRepository = new DyrRepository();
         static BrugerRepository BrugerRepo = new BrugerRepository();
         static void Main(string[] args)
         {
@@ -18,7 +18,13 @@ namespace ConsoleApp
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
 
-            Console.WriteLine("Velkommen til Roskilde Dyreinternat");
+
+            DyrRepository.TilføjDyr(new Dyr("hund","polsk hund","patrick","3","hun",2002,"hvid"));
+            DyrRepository.TilføjDyr(new Dyr("kat", "afrikansk kat","mohib","2","han",1,"sort" ));
+            DyrRepository.TilføjDyr(new Dyr("Hamster", "syriesk", "adam", "1", "han",  2015, "Brun"));
+
+        
+        Console.WriteLine("Velkommen til Roskilde Dyreinternat");
             bool running = true;
 
             while(running == true){
