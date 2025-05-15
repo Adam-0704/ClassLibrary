@@ -218,6 +218,28 @@ namespace ConsoleApp
 
                         break;
 
+                    case 5:
+
+                        foreach (var item in DyrRepository.HentAlleDyr())
+                        {
+                            item.VisInfo();
+
+                        }
+
+                        break;
+
+                    case 6:
+
+                        break;
+
+                    case 7:
+
+                        break;
+
+                    case 8:
+
+                        break;
+
                      
                 }
            

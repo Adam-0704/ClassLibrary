@@ -27,9 +27,9 @@ namespace ClassLibrary
             Fødselsaar = fødselsaar;
             Farve = farve;
         }
-        public override string ToString()
+        public void VisInfo()
         {
-            return $"Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Køn: {Køn}, Fødselsaar {Fødselsaar}, Farve {Farve} ";
+            Console.WriteLine( $"Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Køn: {Køn}, Fødselsår {Fødselsaar}, Farve {Farve} ");
         }
 
     }
