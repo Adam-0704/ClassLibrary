@@ -12,6 +12,8 @@ namespace ConsoleApp
         static ActivityRepository AktivitetRepo= new ActivityRepository();
         static DyrRepository DyrRepository = new DyrRepository();
         static BrugerRepository BrugerRepo = new BrugerRepository();
+        static BookingRepository BookingRepo = new BookingRepository();
+
         static void Main(string[] args)
         {
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "kom ud og år en masse motion og socialisering med andre hunde og mennesker.God mulighed for at styrke deres adfærd og energi.")) ;
@@ -23,8 +25,16 @@ namespace ConsoleApp
             DyrRepository.TilføjDyr(new Dyr("kat", "afrikansk kat","mohib","2","han",1,"sort" ));
             DyrRepository.TilføjDyr(new Dyr("Hamster", "syriesk", "adam", "1", "han",  2015, "Brun"));
 
-        
-        Console.WriteLine("Velkommen til Roskilde Dyreinternat");
+            BrugerRepo.TilføjBruger(new Medarbejder("adam","Adam@gmail.com"," 23252627"));
+            BrugerRepo.TilføjBruger(new Kunde("mohib", "mohib@gmail.com", "27282930"));
+            BrugerRepo.TilføjBruger(new Medarbejder("Patrick", "Patrick@gmail.com"," 23252627"));
+
+            BookingRepo.TilføjBooking(new Booking(1, "Patrick", "Fælles HundeLuftning", new DateOnly(2025, 5, 22)));
+            BookingRepo.TilføjBooking(new Booking(2, "adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
+            BookingRepo.TilføjBooking(new Booking(3, "mohib", "Katten Efter Mussen", new DateOnly(2025, 6, 25)));
+
+
+            Console.WriteLine("Velkommen til Roskilde Dyreinternat");
             bool running = true;
 
             while(running == true){
