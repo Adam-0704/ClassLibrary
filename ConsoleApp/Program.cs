@@ -20,7 +20,6 @@ namespace ConsoleApp
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
 
-
             DyrRepository.TilføjDyr(new Dyr("hund","polsk hund","patrick","3","hun",2002,"hvid"));
             DyrRepository.TilføjDyr(new Dyr("kat", "afrikansk kat","mohib","2","han",1,"sort" ));
             DyrRepository.TilføjDyr(new Dyr("Hamster", "syriesk", "adam", "1", "han",  2015, "Brun"));
@@ -74,7 +73,7 @@ namespace ConsoleApp
 
                 switch(valg){
 
-                    case 1:
+                    case 1: // Se alle brugere
 
                         if (BrugerRepo.ErTom())
                         {
@@ -90,7 +89,7 @@ namespace ConsoleApp
                        
 
                         break;
-                    case 2:
+                    case 2: // Administrer medarbejder og kunder
 
                         Console.WriteLine("1: tiføj medarbejder");
                         Console.WriteLine("2: tilføj kunde");
@@ -132,7 +131,7 @@ namespace ConsoleApp
 
 
                       break;
-                    case 3:
+                    case 3: // Se alle aktiviteter
 
                         foreach (var item in AktivitetRepo.getAll())
                         {
@@ -142,7 +141,7 @@ namespace ConsoleApp
 
                         break;
 
-                    case 4:
+                    case 4: // Tilmeld aktiviteter
 
                         bool Run = true;
                         while (Run == true)
@@ -228,7 +227,7 @@ namespace ConsoleApp
 
                         break;
 
-                    case 5:
+                    case 5: // Se alle dyr
 
                         foreach (var item in DyrRepository.HentAlleDyr())
                         {
@@ -239,6 +238,9 @@ namespace ConsoleApp
                         break;
 
                     case 6:
+                        Console.WriteLine("1: tilføj Dyr");
+                        Console.WriteLine("2: rediger Dyr");
+                        Console.WriteLine("3: slet Dyr");
 
                         break;
 
