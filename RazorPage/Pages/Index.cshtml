@@ -4,7 +4,33 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">🐾 Velkommen til Roskilde Dyreinternat 🐾</h1>
+
+    <div class="list-group">
+        <a asp-page="/SeAlleBruger" class="list-group-item list-group-item-action">
+            1️⃣ Se alle brugere
+        </a>
+        <a asp-page="/AdminBruger" class="list-group-item list-group-item-action">
+            2️⃣ Administrer medarbejdere og kunder
+        </a>
+        <a asp-page="/AlleAktiviteter" class="list-group-item list-group-item-action">
+            3️⃣ Se alle aktiviteter
+        </a>
+        <a asp-page="/AdminAktiviteter" class="list-group-item list-group-item-action">
+            4️⃣ Tilmeld aktiviteter
+        </a>
+        <a asp-page="AlleDyr" class="list-group-item list-group-item-action">
+            5️⃣ Se alle dyr
+        </a>
+        <a asp-page="AdminDyr" class="list-group-item list-group-item-action">
+            6️⃣ Administrer dyr
+        </a>
+        <a asp-page="/Booking" class="list-group-item list-group-item-action">
+            7️⃣ Book en tid
+        </a>
+        <a asp-page="/BlogIndlæg" class="list-group-item list-group-item-action">
+            8️⃣ Se og rediger blogindlæg
+        </a>
+    </div>
 </div>
