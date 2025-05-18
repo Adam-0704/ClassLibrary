@@ -241,7 +241,40 @@ namespace ConsoleApp
                         Console.WriteLine("1: tilføj Dyr");
                         Console.WriteLine("2: rediger Dyr");
                         Console.WriteLine("3: slet Dyr");
+                        int dyrValg = Convert.ToInt32(Console.ReadLine());
 
+                        switch (dyrValg)
+                        {
+                            case 1:
+                                Console.Write("Indtast art: ");
+                                string art = Console.ReadLine();
+                                Console.Write("Indtast race: ");
+                                string race = Console.ReadLine();
+                                Console.Write("Indtast ejer: ");
+                                string ejer = Console.ReadLine();
+                                Console.Write("Indtast alder: ");
+                                string alder = Console.ReadLine();
+                                Console.Write("Indtast køn: ");
+                                string køn = Console.ReadLine();
+                                Console.Write("Indtast årgang: ");
+                                int årgang = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("Indtast farve: ");
+                                string farve = Console.ReadLine();
+
+                                Dyr nytDyr = new Dyr(art, race, ejer, alder, køn, årgang, farve);
+                                DyrRepository.TilføjDyr(nytDyr);
+                                Console.WriteLine("Dyr tilføjet.");
+                                break;
+                            case 2:
+                                // Her kan du senere tilføje kode til at redigere dyr
+                                break;
+                            case 3:
+                                // Her kan du senere tilføje kode til at slette dyr
+                                break;
+                            default:
+                                Console.WriteLine("Ugyldigt valg.");
+                                break;
+                        }
                         break;
 
                     case 7:
