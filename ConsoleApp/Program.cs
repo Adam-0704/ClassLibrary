@@ -99,7 +99,7 @@ namespace ConsoleApp
 
                         switch (vælg)
                         {
-                            case 1:
+                            case 1: // Tilføj medarbejder
                                 Console.Write("Indtast navn: ");
                                 string navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
@@ -113,7 +113,7 @@ namespace ConsoleApp
                                 break;
 
 
-                            case 2:
+                            case 2: // Tilføj kunde
                                 Console.Write("Indtast navn: ");
                                 string Navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
@@ -237,7 +237,7 @@ namespace ConsoleApp
 
                         break;
 
-                    case 6:
+                    case 6: // Administrer dyr
                         Console.WriteLine("1: tilføj Dyr");
                         Console.WriteLine("2: rediger Dyr");
                         Console.WriteLine("3: slet Dyr");
@@ -250,26 +250,28 @@ namespace ConsoleApp
                                 string art = Console.ReadLine();
                                 Console.Write("Indtast race: ");
                                 string race = Console.ReadLine();
-                                Console.Write("Indtast ejer: ");
-                                string ejer = Console.ReadLine();
-                                Console.Write("Indtast alder: ");
-                                string alder = Console.ReadLine();
+                                Console.Write("Indtast Navn: ");
+                                string navn = Console.ReadLine();
+                                Console.Write("Indtast chipnummer: ");
+                                string chipnummer = Console.ReadLine();
                                 Console.Write("Indtast køn: ");
                                 string køn = Console.ReadLine();
-                                Console.Write("Indtast årgang: ");
-                                int årgang = Convert.ToInt32(Console.ReadLine());
-                                Console.Write("Indtast farve: ");
+                                Console.Write("Indtast fødelsaar: ");
+                                int fødselsaar = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("Intast farve: ");
                                 string farve = Console.ReadLine();
+                                Console.Write("Indtast farve: ");
 
-                                Dyr nytDyr = new Dyr(art, race, ejer, alder, køn, årgang, farve);
+                                Dyr nytDyr = new Dyr(art, race, navn, chipnummer, køn, fødselsaar, farve);
                                 DyrRepository.TilføjDyr(nytDyr);
                                 Console.WriteLine("Dyr tilføjet.");
                                 break;
-                            case 2:
-                                // Her kan du senere tilføje kode til at redigere dyr
+
+                            case 2: // Rediger Dyr
+
                                 break;
-                            case 3:
-                                // Her kan du senere tilføje kode til at slette dyr
+                            case 3: // Slet Dyr
+
                                 break;
                             default:
                                 Console.WriteLine("Ugyldigt valg.");
@@ -277,11 +279,11 @@ namespace ConsoleApp
                         }
                         break;
 
-                    case 7:
+                    case 7: // Book en tid
 
                         break;
 
-                    case 8:
+                    case 8: // Se og redigere blogindlæg
 
                         break;
 
