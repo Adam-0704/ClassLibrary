@@ -19,10 +19,10 @@ namespace ConsoleApp
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "kom ud og år en masse motion og socialisering med andre hunde og mennesker.God mulighed for at styrke deres adfærd og energi.")) ;
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
-
-            DyrRepository.TilføjDyr(new Dyr("hund","polsk hund","patrick","3","hun",2002,"hvid"));
-            DyrRepository.TilføjDyr(new Dyr("kat", "afrikansk kat","mohib","2","han",1,"sort" ));
-            DyrRepository.TilføjDyr(new Dyr("Hamster", "syriesk", "adam", "1", "han",  2015, "Brun"));
+            
+            DyrRepository.TilføjDyr(new Dyr(1, "Hund", "Polsk Hund", "Patrick", "3", "Ingen", "Stor", 2002, new DateTime(2020, 1, 1)));
+            DyrRepository.TilføjDyr(new Dyr(2, "Kat", "Afrikansk Kat", "Mohib", "2", "Ingen", "Lille", 2021, new DateTime(2023, 5, 10)));
+            DyrRepository.TilføjDyr(new Dyr(3, "Hamster", "Syrisk", "Adam", "1", "Brun plet", "Lille", 2015, new DateTime(2024, 3, 15)));
 
             BrugerRepo.TilføjBruger(new Medarbejder("adam","Adam@gmail.com"," 23252627"));
             BrugerRepo.TilføjBruger(new Kunde("mohib", "mohib@gmail.com", "27282930"));
@@ -228,13 +228,10 @@ namespace ConsoleApp
                         break;
 
                     case 5: // Se alle dyr
-
                         foreach (var item in DyrRepository.HentAlleDyr())
                         {
-                            item.VisInfo();
-
+                            Console.WriteLine(item.ToString());
                         }
-
                         break;
 
                     case 6: // Administrer dyr
@@ -246,23 +243,26 @@ namespace ConsoleApp
                         switch (dyrValg)
                         {
                             case 1:
+                                Console.Write("Indtast id: ");
+                                int id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast art: ");
                                 string art = Console.ReadLine();
                                 Console.Write("Indtast race: ");
                                 string race = Console.ReadLine();
-                                Console.Write("Indtast Navn: ");
+                                Console.Write("Indtast navn: ");
                                 string navn = Console.ReadLine();
                                 Console.Write("Indtast chipnummer: ");
                                 string chipnummer = Console.ReadLine();
-                                Console.Write("Indtast køn: ");
-                                string køn = Console.ReadLine();
-                                Console.Write("Indtast fødelsaar: ");
-                                int fødselsaar = Convert.ToInt32(Console.ReadLine());
-                                Console.Write("Intast farve: ");
-                                string farve = Console.ReadLine();
-                                Console.Write("Indtast farve: ");
+                                Console.Write("Indtast særlige kendetegn: ");
+                                string særligeKendetegn = Console.ReadLine();
+                                Console.Write("Indtast størrelse: ");
+                                string størrelse = Console.ReadLine();
+                                Console.Write("Indtast fødselsår: ");
+                                int fødselsår = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("Indtast ankomstdato (yyyy-mm-dd): ");
+                                DateTime ankomstdato = DateTime.Parse(Console.ReadLine());
 
-                                Dyr nytDyr = new Dyr(art, race, navn, chipnummer, køn, fødselsaar, farve);
+                                Dyr nytDyr = new Dyr(id, art, race, navn, chipnummer, særligeKendetegn, størrelse, fødselsår, ankomstdato);
                                 DyrRepository.TilføjDyr(nytDyr);
                                 Console.WriteLine("Dyr tilføjet.");
                                 break;

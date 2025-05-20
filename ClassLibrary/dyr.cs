@@ -8,28 +8,34 @@ namespace ClassLibrary
 {
     public class Dyr
     {
-        public string Art { get; set; }
-        public string Race { get; set; }
-        public string Navn { get; set; }
-        public string Chipnummer { get; set; }
-        public string Køn { get; set; }
-        public int Fødselsaar { get; set; }
-        public string Farve { get; set; }
+        public int Id { get; set; }
+        public string Art { get; set; }                // Species
+        public string Race { get; set; }               // Breed
+        public string Navn { get; set; }               // Name
+        public string Chipnummer { get; set; }         // ChipNumber
+        public string SærligeKendetegn { get; set; }   // SpecialFeatures
+        public string Størrelse { get; set; }          // Size
+        public int Fødselsår { get; set; }             // BirthYear
+        public DateTime Ankomstdato { get; set; }      // ArrivalDate
+
 
         // Constructor
-        public Dyr(string art, string race, string navn, string chipnummer, string køn, int fødselsaar, string farve)
+        public Dyr(int id, string art, string race, string navn, string chipnummer, string særligeKendetegn, string størrelse, int fødselsår, DateTime ankomstdato)
         {
+            Id = id;
             Art = art;
             Race = race;
             Navn = navn;
             Chipnummer = chipnummer;
-            Køn = køn;
-            Fødselsaar = fødselsaar;
-            Farve = farve;
+            SærligeKendetegn = særligeKendetegn;
+            Størrelse = størrelse;
+            Fødselsår = fødselsår;
+            Ankomstdato = ankomstdato;
         }
-        public void VisInfo()
+
+        public override string ToString()
         {
-            Console.WriteLine( $"Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Køn: {Køn}, Fødselsår {Fødselsaar}, Farve {Farve} ");
+            return $"Id: {Id}, Art: {Art}, Race: {Race}, Navn: {Navn}, Chipnummer: {Chipnummer}, Særlige kendetegn: {SærligeKendetegn}, Størrelse: {Størrelse}, Fødselsår: {Fødselsår}, Ankomstdato: {Ankomstdato:dd-MM-yyyy}";
         }
 
     }
