@@ -177,9 +177,9 @@ namespace ConsoleApp
                                     Console.WriteLine($"{i++}: {item.Navn}");
 
                                 int vælger = Convert.ToInt32(Console.ReadLine());
-                                var valgtBruger = brugere[vælger - 1];
+                                var valgteBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Fælles HundeLuftning]");
+                                Console.WriteLine($"{valgteBruger.Navn} Tilmeldt til [Fælles HundeLuftning]");
 
 
                                 Run = false;
@@ -195,9 +195,9 @@ namespace ConsoleApp
                                     Console.WriteLine($"{i++}: {item.Navn}");
 
                                 int vælger = Convert.ToInt32(Console.ReadLine());
-                                var valgtBruger = brugere[vælger - 1];
+                                var valgteBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Løb i HamsterHjul]");
+                                Console.WriteLine($"{valgteBruger.Navn} Tilmeldt til [Løb i HamsterHjul]");
 
                                 Run = false;
                             }
@@ -212,9 +212,9 @@ namespace ConsoleApp
                                     Console.WriteLine($"{i++}: {item.Navn}");
 
                                 int vælger = Convert.ToInt32(Console.ReadLine());
-                                var valgtBruger = brugere[vælger - 1];
+                                var valgteBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Katten efter Mussen]");
+                                Console.WriteLine($"{valgteBruger.Navn} Tilmeldt til [Katten efter Mussen]");
 
 
                                 Run = false;
@@ -363,8 +363,69 @@ namespace ConsoleApp
                         break;
 
                     case 7: // Book en tid
+                        Console.WriteLine("Vælg en bruger til booking (indtast ID):");
+                        var brugereTilBooking = BrugerRepo.HentAlleBrugere();
+                        for (int i = 0; i < brugereTilBooking.Count; i++)
+                        {
+                            Console.WriteLine($"ID: {brugereTilBooking[i].Id}, Navn: {brugereTilBooking[i].Navn}");
+                        }
+                        int brugerId = Convert.ToInt32(Console.ReadLine());
+                        Bruger valgtBruger = null;
+                        for (int i = 0; i < brugereTilBooking.Count; i++)
+                        {
+                            if (brugereTilBooking[i].Id == brugerId)
+                            {
+                                valgtBruger = brugereTilBooking[i];
+                                break;
+                            }
+                        }
+                        if (valgtBruger == null)
+                        {
+                            Console.WriteLine("Bruger med det ID blev ikke fundet.");
+                            break;
+                        }
 
+                        // Vis alle dyr med ID
+                        Console.WriteLine("Vælg et dyr at booke tid hos (indtast ID):");
+                        var dyrListeBooking = DyrRepository.HentAlleDyr();
+                        for (int i = 0; i < dyrListeBooking.Count; i++)
+                        {
+                            Console.WriteLine($"ID: {dyrListeBooking[i].Id}, Navn: {dyrListeBooking[i].Navn}, Art: {dyrListeBooking[i].Art}, Race: {dyrListeBooking[i].Race}");
+                        }
+                        int dyrId = Convert.ToInt32(Console.ReadLine());
+                        Dyr valgtDyr = null;
+                        for (int i = 0; i < dyrListeBooking.Count; i++)
+                        {
+                            if (dyrListeBooking[i].Id == dyrId)
+                            {
+                                valgtDyr = dyrListeBooking[i];
+                                break;
+                            }
+                        }
+                        if (valgtDyr == null)
+                        {
+                            Console.WriteLine("Dyr med det ID blev ikke fundet.");
+                            break;
+                        }
+
+                        // Vælg dato for booking
+                        Console.Write("Indtast dato for booking (yyyy-mm-dd): ");
+                        string datoInput = Console.ReadLine();
+                        DateTime bookingDato;
+                        if (!DateTime.TryParse(datoInput, out bookingDato))
+                        {
+                            Console.WriteLine("Ugyldigt datoformat.");
+                            break;
+                        }
+
+                        // Opret booking
+                        int nyBookingId = BookingRepo.HentAlleBookings().Count + 1;
+                        Booking nyBooking = new Booking(nyBookingId, valgtBruger.Navn, valgtDyr.Navn, DateOnly.FromDateTime(bookingDato));
+                        BookingRepo.TilføjBooking(nyBooking);
+
+                        Console.WriteLine($"Booking oprettet for {valgtBruger.Navn} hos dyret '{valgtDyr.Navn}' den {bookingDato:dd-MM-yyyy}.");
                         break;
+                        
 
                     case 8: // Se og redigere blogindlæg
 
