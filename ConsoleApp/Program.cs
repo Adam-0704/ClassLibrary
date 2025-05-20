@@ -24,9 +24,9 @@ namespace ConsoleApp
             DyrRepository.TilføjDyr(new Dyr(2, "Kat", "Afrikansk Kat", "Mohib", "2", "Ingen", "Lille", 2021, new DateTime(2023, 5, 10)));
             DyrRepository.TilføjDyr(new Dyr(3, "Hamster", "Syrisk", "Adam", "1", "Brun plet", "Lille", 2015, new DateTime(2024, 3, 15)));
 
-            BrugerRepo.TilføjBruger(new Medarbejder("adam","Adam@gmail.com"," 23252627"));
-            BrugerRepo.TilføjBruger(new Kunde("mohib", "mohib@gmail.com", "27282930"));
-            BrugerRepo.TilføjBruger(new Medarbejder("Patrick", "Patrick@gmail.com"," 23252627"));
+            BrugerRepo.TilføjBruger(new Medarbejder(1, "adam", "Adam@gmail.com", "23252627"));
+            BrugerRepo.TilføjBruger(new Kunde(2, "mohib", "mohib@gmail.com", "27282930"));
+            BrugerRepo.TilføjBruger(new Medarbejder(3, "Patrick", "Patrick@gmail.com", "23252627"));
 
             BookingRepo.TilføjBooking(new Booking(1, "Patrick", "Fælles HundeLuftning", new DateOnly(2025, 5, 22)));
             BookingRepo.TilføjBooking(new Booking(2, "adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
@@ -91,7 +91,7 @@ namespace ConsoleApp
                         break;
                     case 2: // Administrer medarbejder og kunder
 
-                        Console.WriteLine("1: tiføj medarbejder");
+                        Console.WriteLine("1: tilføj medarbejder");
                         Console.WriteLine("2: tilføj kunde");
                         
 
@@ -100,6 +100,8 @@ namespace ConsoleApp
                         switch (vælg)
                         {
                             case 1: // Tilføj medarbejder
+                                Console.Write("Indtast id: ");
+                                int medarbejderId = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast navn: ");
                                 string navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
@@ -107,21 +109,23 @@ namespace ConsoleApp
                                 Console.Write("Indtast telefonnummer: ");
                                 string telefonnummer = Console.ReadLine();
 
-                                Medarbejder medarbejder = new Medarbejder(navn, email, telefonnummer);
+                                Medarbejder medarbejder = new Medarbejder(medarbejderId, navn, email, telefonnummer);
                                 BrugerRepo.TilføjBruger(medarbejder);
                                 Console.WriteLine("Medarbejder tilføjet.");
                                 break;
 
 
                             case 2: // Tilføj kunde
+                                Console.Write("Indtast id: ");
+                                int kundeId = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast navn: ");
-                                string Navn = Console.ReadLine();
+                                string kundeNavn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
-                                string Email = Console.ReadLine();
+                                string kundeEmail = Console.ReadLine();
                                 Console.Write("Indtast telefonnummer: ");
-                                string Telefonnummer = Console.ReadLine();
+                                string kundeTelefonnummer = Console.ReadLine();
 
-                                Kunde kunde1 = new Kunde(Navn, Email,Telefonnummer);
+                                Kunde kunde1 = new Kunde(kundeId, kundeNavn, kundeEmail, kundeTelefonnummer);
                                 BrugerRepo.TilføjBruger(kunde1);
                                 Console.WriteLine("Kunde tilføjet.");
                                 break;
