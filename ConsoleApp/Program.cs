@@ -272,10 +272,89 @@ namespace ConsoleApp
                                 break;
 
                             case 2: // Rediger Dyr
+                                Console.Write("Indtast id på dyret der skal redigeres: ");
+                                int redigerId = Convert.ToInt32(Console.ReadLine());
+                                var dyrListe = DyrRepository.HentAlleDyr();
+                                Dyr dyrAtRedigere = null;
+                                foreach (var dyr in dyrListe)
+                                {
+                                    if (dyr.Id == redigerId)
+                                    {
+                                        dyrAtRedigere = dyr;
+                                        break;
+                                    }
+                                }
+                                if (dyrAtRedigere != null)
+                                {
+                                    Console.Write("Nyt navn (lad tom for ingen ændring): ");
+                                    string nytNavn = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytNavn)) dyrAtRedigere.Navn = nytNavn;
 
+                                    Console.Write("Ny art (lad tom for ingen ændring): ");
+                                    string nyArt = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyArt)) dyrAtRedigere.Art = nyArt;
+
+                                    Console.Write("Ny race (lad tom for ingen ændring): ");
+                                    string nyRace = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyRace)) dyrAtRedigere.Race = nyRace;
+
+                                    Console.Write("Nyt chipnummer (lad tom for ingen ændring): ");
+                                    string nytChipnummer = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytChipnummer)) dyrAtRedigere.Chipnummer = nytChipnummer;
+
+                                    Console.Write("Nye særlige kendetegn (lad tom for ingen ændring): ");
+                                    string nyeKendetegn = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyeKendetegn)) dyrAtRedigere.SærligeKendetegn = nyeKendetegn;
+
+                                    Console.Write("Ny størrelse (lad tom for ingen ændring): ");
+                                    string nyStørrelse = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyStørrelse)) dyrAtRedigere.Størrelse = nyStørrelse;
+
+                                    Console.Write("Nyt fødselsår (lad tom for ingen ændring): ");
+                                    string nytFødselsår = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytFødselsår))
+                                    {
+                                        int nytfødselsår;
+                                        if (int.TryParse(nytFødselsår, out fødselsår)) dyrAtRedigere.Fødselsår = fødselsår;
+                                    }
+
+                                    Console.Write("Ny ankomstdato (yyyy-mm-dd, lad tom for ingen ændring): ");
+                                    string nyAnkomstdato = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyAnkomstdato))
+                                    {
+                                        DateTime ankomstdatoVal;
+                                        if (DateTime.TryParse(nyAnkomstdato, out ankomstdatoVal)) dyrAtRedigere.Ankomstdato = ankomstdatoVal;
+                                    }
+
+                                    Console.WriteLine("Dyret er opdateret.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Dyr med det id blev ikke fundet.");
+                                }
                                 break;
                             case 3: // Slet Dyr
-
+                                Console.Write("Indtast id på dyret der skal slettes: ");
+                                int sletId = Convert.ToInt32(Console.ReadLine());
+                                var dyrListe2 = DyrRepository.HentAlleDyr();
+                                Dyr dyrAtSlette = null;
+                                foreach (var dyr in dyrListe2)
+                                {
+                                    if (dyr.Id == sletId)
+                                    {
+                                        dyrAtSlette = dyr;
+                                        break;
+                                    }
+                                }
+                                if (dyrAtSlette != null)
+                                {
+                                    DyrRepository.SletDyr(dyrAtSlette);
+                                    Console.WriteLine("Dyret er slettet.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Dyr med det id blev ikke fundet.");
+                                }
                                 break;
                             default:
                                 Console.WriteLine("Ugyldigt valg.");
