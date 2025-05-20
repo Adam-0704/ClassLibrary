@@ -16,9 +16,9 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "Kom ud og år en masse motion og socialisering med andre hunde og mennesker. God mulighed for at styrke deres adfærd og energi.")) ;
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " Kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
+            AktivitetRepo.TilføjAktivitet(new Activity(1, new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "Kom ud og år en masse motion og socialisering med andre hunde og mennesker. God mulighed for at styrke deres adfærd og energi.")) ;
+            AktivitetRepo.TilføjAktivitet(new Activity(2, new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " Kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
+            AktivitetRepo.TilføjAktivitet(new Activity(3, new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
             
             DyrRepository.TilføjDyr(new Dyr(1, "Hund", "Polsk Hund", "Patrick", "3", "Ingen", "Stor", 2002, new DateTime(2020, 1, 1)));
             DyrRepository.TilføjDyr(new Dyr(2, "Kat", "Afrikansk Kat", "Mohib", "2", "Ingen", "Lille", 2021, new DateTime(2023, 5, 10)));
@@ -179,7 +179,7 @@ namespace ConsoleApp
                                 int vælger = Convert.ToInt32(Console.ReadLine());
                                 var valgtBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Fælles HundeLufting]");
+                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Fælles HundeLuftning]");
 
 
                                 Run = false;
