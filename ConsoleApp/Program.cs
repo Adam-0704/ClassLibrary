@@ -16,21 +16,21 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "kom ud og år en masse motion og socialisering med andre hunde og mennesker.God mulighed for at styrke deres adfærd og energi.")) ;
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
+            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "Kom ud og år en masse motion og socialisering med andre hunde og mennesker. God mulighed for at styrke deres adfærd og energi.")) ;
+            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " Kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
             AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
             
             DyrRepository.TilføjDyr(new Dyr(1, "Hund", "Polsk Hund", "Patrick", "3", "Ingen", "Stor", 2002, new DateTime(2020, 1, 1)));
             DyrRepository.TilføjDyr(new Dyr(2, "Kat", "Afrikansk Kat", "Mohib", "2", "Ingen", "Lille", 2021, new DateTime(2023, 5, 10)));
             DyrRepository.TilføjDyr(new Dyr(3, "Hamster", "Syrisk", "Adam", "1", "Brun plet", "Lille", 2015, new DateTime(2024, 3, 15)));
 
-            BrugerRepo.TilføjBruger(new Medarbejder(1, "adam", "Adam@gmail.com", "23252627"));
-            BrugerRepo.TilføjBruger(new Kunde(2, "mohib", "mohib@gmail.com", "27282930"));
+            BrugerRepo.TilføjBruger(new Medarbejder(1, "Adam", "Adam@gmail.com", "23252627"));
+            BrugerRepo.TilføjBruger(new Kunde(2, "Mohib", "mohib@gmail.com", "27282930"));
             BrugerRepo.TilføjBruger(new Medarbejder(3, "Patrick", "Patrick@gmail.com", "23252627"));
 
             BookingRepo.TilføjBooking(new Booking(1, "Patrick", "Fælles HundeLuftning", new DateOnly(2025, 5, 22)));
-            BookingRepo.TilføjBooking(new Booking(2, "adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
-            BookingRepo.TilføjBooking(new Booking(3, "mohib", "Katten Efter Mussen", new DateOnly(2025, 6, 25)));
+            BookingRepo.TilføjBooking(new Booking(2, "Adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
+            BookingRepo.TilføjBooking(new Booking(3, "Mohib", "Katten Efter Mussen", new DateOnly(2025, 6, 25)));
 
 
             Console.WriteLine("Velkommen til Roskilde Dyreinternat");
@@ -42,28 +42,28 @@ namespace ConsoleApp
                 Console.WriteLine("\nVælg en af valmulighederne");
                 Thread.Sleep(700);
 
-                Console.WriteLine("1: se alle brugere");
+                Console.WriteLine("1: Se alle brugere");
                 Thread.Sleep(200);
 
                 Console.WriteLine("2: Administrer Medarbejder og Kunder");
                 Thread.Sleep(200);
 
-                Console.WriteLine("3: se alle Aktiviter");
+                Console.WriteLine("3: Se alle Aktiviter");
                 Thread.Sleep(200);
 
-                Console.WriteLine("4: tilmeld aktiviteter");
+                Console.WriteLine("4: Tilmeld aktiviteter");
                 Thread.Sleep(200);
 
-                Console.WriteLine("5: se alle dyr");
+                Console.WriteLine("5: Se alle dyr");
                 Thread.Sleep(200);
 
-                Console.WriteLine("6: administre dyr");
+                Console.WriteLine("6: Administre dyr");
                 Thread.Sleep(200);
 
                 Console.WriteLine("7: Book en tid");
                 Thread.Sleep(200);
 
-                Console.WriteLine("8: se og redigere Blogindlæg");
+                Console.WriteLine("8: Se og redigere Blogindlæg");
                 Thread.Sleep(200);
 
 
@@ -77,7 +77,7 @@ namespace ConsoleApp
 
                         if (BrugerRepo.ErTom())
                         {
-                            Console.WriteLine("der er ingen brugere endnu");
+                            Console.WriteLine("Der er ingen brugere endnu");
                         }
                         else
                         {
@@ -91,8 +91,8 @@ namespace ConsoleApp
                         break;
                     case 2: // Administrer medarbejder og kunder
 
-                        Console.WriteLine("1: tilføj medarbejder");
-                        Console.WriteLine("2: tilføj kunde");
+                        Console.WriteLine("1: Tiføj medarbejder");
+                        Console.WriteLine("2: Tilføj kunde");
                         
 
                         int vælg = Convert.ToInt32(Console.ReadLine());
@@ -119,13 +119,13 @@ namespace ConsoleApp
                                 Console.Write("Indtast id: ");
                                 int kundeId = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast navn: ");
-                                string kundeNavn = Console.ReadLine();
+                                string Navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
-                                string kundeEmail = Console.ReadLine();
+                                string Email = Console.ReadLine();
                                 Console.Write("Indtast telefonnummer: ");
-                                string kundeTelefonnummer = Console.ReadLine();
+                                string Telefonnummer = Console.ReadLine();
 
-                                Kunde kunde1 = new Kunde(kundeId, kundeNavn, kundeEmail, kundeTelefonnummer);
+                                Kunde kunde1 = new Kunde(kundeId, Navn, Email,Telefonnummer);
                                 BrugerRepo.TilføjBruger(kunde1);
                                 Console.WriteLine("Kunde tilføjet.");
                                 break;
@@ -157,7 +157,7 @@ namespace ConsoleApp
                                 item.VisInfo();
 
                             }
-                            Console.WriteLine("\nindtast enten \n1 \n2 \n3");
+                            Console.WriteLine("\nIndtast enten \n1 \n2 \n3");
 
                             int Indtast = Convert.ToInt32(Console.ReadLine());
                             if (BrugerRepo.ErTom())
@@ -179,7 +179,7 @@ namespace ConsoleApp
                                 int vælger = Convert.ToInt32(Console.ReadLine());
                                 var valgtBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Fælles HundeLufting]");
+                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Fælles HundeLufting]");
 
 
                                 Run = false;
@@ -197,7 +197,7 @@ namespace ConsoleApp
                                 int vælger = Convert.ToInt32(Console.ReadLine());
                                 var valgtBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Løb i HamsterHjul]");
+                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Løb i HamsterHjul]");
 
                                 Run = false;
                             }
@@ -214,7 +214,7 @@ namespace ConsoleApp
                                 int vælger = Convert.ToInt32(Console.ReadLine());
                                 var valgtBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Katten efter Mussen]");
+                                Console.WriteLine($"{valgtBruger.Navn} Tilmeldt til [Katten efter Mussen]");
 
 
                                 Run = false;
@@ -222,7 +222,7 @@ namespace ConsoleApp
                             else
                             {
 
-                                Console.WriteLine("indtast venligst et af de givende tal");
+                                Console.WriteLine("Indtast venligst et af de givende tal");
 
                             }
 
@@ -239,9 +239,9 @@ namespace ConsoleApp
                         break;
 
                     case 6: // Administrer dyr
-                        Console.WriteLine("1: tilføj Dyr");
-                        Console.WriteLine("2: rediger Dyr");
-                        Console.WriteLine("3: slet Dyr");
+                        Console.WriteLine("1: Tilføj Dyr");
+                        Console.WriteLine("2: Rediger Dyr");
+                        Console.WriteLine("3: Slet Dyr");
                         int dyrValg = Convert.ToInt32(Console.ReadLine());
 
                         switch (dyrValg)
