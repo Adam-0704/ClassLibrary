@@ -1,5 +1,42 @@
 ﻿@page
 @model PrivacyModel
+@using ClassLibrary
 @{
     ViewData["Title"] = "Se Alle Bruger";
 }
+
+<div class="container mt-5">
+    <h2 class="mb-4">Alle Brugere</h2>
+
+    @if (Model.BrugerListe.Count == 0)
+    {
+        <div class="alert alert-info">Der er ingen brugere endnu.</div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Type</th>
+                    <th>Navn</th>
+                    <th>Email</th>
+                    <th>Telefonnummer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bruger in Model.BrugerListe)
+                {
+                    <tr>
+                        <td>
+                            @(bruger is Medarbejder ? "Medarbejder" :
+                                bruger is Kunde ? "Kunde" : "Ukendt")
+                        </td>
+                        <td>@bruger.Navn</td>
+                        <td>@bruger.Email</td>
+                        <td>@bruger.Telefonnummer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
