@@ -12,6 +12,11 @@ namespace ClassLibrary.repository
             brugere.Add(bruger);
         }
 
+        public void SletBruger(Bruger bruger)
+        {
+            brugere.Remove(bruger);
+        }
+
         public List<Bruger> HentAlleBrugere()
         {
             return brugere;

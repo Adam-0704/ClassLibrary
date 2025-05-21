@@ -95,14 +95,15 @@ namespace ConsoleApp
 
                         break;
                     case 2: // Administrer medarbejder og kunder
-
-                        Console.WriteLine("1: Tiføj medarbejder");
+                        Console.WriteLine("1: Tilføj medarbejder");
                         Console.WriteLine("2: Tilføj kunde");
-                        
+                        Console.WriteLine("3: Ændre medarbejder");
+                        Console.WriteLine("4: Ændre kunde");
+                        Console.WriteLine("5: Slet medarbejder");
+                        Console.WriteLine("6: Slet kunde");
+                        int valg2 = Convert.ToInt32(Console.ReadLine());
 
-                        int vælg = Convert.ToInt32(Console.ReadLine());
-
-                        switch (vælg)
+                        switch (valg2)
                         {
                             case 1: // Tilføj medarbejder
                                 Console.Write("Indtast id: ");
@@ -119,27 +120,140 @@ namespace ConsoleApp
                                 Console.WriteLine("Medarbejder tilføjet.");
                                 break;
 
-
                             case 2: // Tilføj kunde
                                 Console.Write("Indtast id: ");
                                 int kundeId = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast navn: ");
-                                string Navn = Console.ReadLine();
+                                string kundeNavn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
-                                string Email = Console.ReadLine();
+                                string kundeEmail = Console.ReadLine();
                                 Console.Write("Indtast telefonnummer: ");
-                                string Telefonnummer = Console.ReadLine();
+                                string kundeTelefon = Console.ReadLine();
 
-                                Kunde kunde1 = new Kunde(kundeId, Navn, Email,Telefonnummer);
-                                BrugerRepo.TilføjBruger(kunde1);
+                                Kunde kunde = new Kunde(kundeId, kundeNavn, kundeEmail, kundeTelefon);
+                                BrugerRepo.TilføjBruger(kunde);
                                 Console.WriteLine("Kunde tilføjet.");
                                 break;
 
+                            case 3: // Ændre medarbejder
+                                Console.Write("Indtast id på medarbejder der skal ændres: ");
+                                int ændreMedarbejderId = Convert.ToInt32(Console.ReadLine());
+                                Medarbejder medarbejderAtÆndre = null;
+                                foreach (var bruger in BrugerRepo.HentAlleBrugere())
+                                {
+                                    if (bruger.Id == ændreMedarbejderId && bruger is Medarbejder)
+                                    {
+                                        medarbejderAtÆndre = (Medarbejder)bruger;
+                                        break;
+                                    }
+                                }
+                                if (medarbejderAtÆndre != null)
+                                {
+                                    Console.Write("Nyt navn: ");
+                                    string nytNavn = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytNavn)) medarbejderAtÆndre.Navn = nytNavn;
 
+                                    Console.Write("Ny email: ");
+                                    string nyEmail = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyEmail)) medarbejderAtÆndre.Email = nyEmail;
+
+                                    Console.Write("Nyt telefonnummer: ");
+                                    string nytTelefon = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytTelefon)) medarbejderAtÆndre.Telefonnummer = nytTelefon;
+
+                                    Console.WriteLine("Medarbejder opdateret.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Medarbejder med det id blev ikke fundet.");
+                                }
+                                break;
+
+                            case 4: // Ændre kunde
+                                Console.Write("Indtast id på kunde der skal ændres: ");
+                                int ændreKundeId = Convert.ToInt32(Console.ReadLine());
+                                Kunde kundeAtÆndre = null;
+                                foreach (var bruger in BrugerRepo.HentAlleBrugere())
+                                {
+                                    if (bruger.Id == ændreKundeId && bruger is Kunde)
+                                    {
+                                        kundeAtÆndre = (Kunde)bruger;
+                                        break;
+                                    }
+                                }
+                                if (kundeAtÆndre != null)
+                                {
+                                    Console.Write("Nyt navn: ");
+                                    string nytNavn = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytNavn)) kundeAtÆndre.Navn = nytNavn;
+
+                                    Console.Write("Ny email: ");
+                                    string nyEmail = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyEmail)) kundeAtÆndre.Email = nyEmail;
+
+                                    Console.Write("Nyt telefonnummer: ");
+                                    string nytTelefon = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytTelefon)) kundeAtÆndre.Telefonnummer = nytTelefon;
+
+                                    Console.WriteLine("Kunde opdateret.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Kunde med det id blev ikke fundet.");
+                                }
+                                break;
+
+                            case 5: // Slet medarbejder
+                                Console.Write("Indtast id på medarbejder der skal slettes: ");
+                                int sletMedarbejderId = Convert.ToInt32(Console.ReadLine());
+                                Medarbejder medarbejderAtSlette = null;
+                                foreach (var bruger in BrugerRepo.HentAlleBrugere())
+                                {
+                                    if (bruger.Id == sletMedarbejderId && bruger is Medarbejder)
+                                    {
+                                        medarbejderAtSlette = (Medarbejder)bruger;
+                                        break;
+                                    }
+                                }
+                                if (medarbejderAtSlette != null)
+                                {
+                                    BrugerRepo.SletBruger(medarbejderAtSlette);
+                                    Console.WriteLine("Medarbejder slettet.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Medarbejder med det id blev ikke fundet.");
+                                }
+                                break;
+
+                            case 6: // Slet kunde
+                                Console.Write("Indtast id på kunde der skal slettes: ");
+                                int sletKundeId = Convert.ToInt32(Console.ReadLine());
+                                Kunde kundeAtSlette = null;
+                                foreach (var bruger in BrugerRepo.HentAlleBrugere())
+                                {
+                                    if (bruger.Id == sletKundeId && bruger is Kunde)
+                                    {
+                                        kundeAtSlette = (Kunde)bruger;
+                                        break;
+                                    }
+                                }
+                                if (kundeAtSlette != null)
+                                {
+                                    BrugerRepo.SletBruger(kundeAtSlette);
+                                    Console.WriteLine("Kunde slettet.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Kunde med det id blev ikke fundet.");
+                                }
+                                break;
+
+                            default:
+                                Console.WriteLine("Ugyldigt valg.");
+                                break;
                         }
-
-
-                      break;
+                        break;
                     case 3: // Se alle aktiviteter
 
                         foreach (var item in AktivitetRepo.getAll())
