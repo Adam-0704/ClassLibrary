@@ -14,6 +14,8 @@ namespace ConsoleApp
         static BrugerRepository BrugerRepo = new BrugerRepository();
         static BookingRepository BookingRepo = new BookingRepository();
 
+        static string blogIndhold = " 🐾 En Dag i Dyrenes Tegn – Besøgsdag på Internatet\r\nDato: 18. maj 2025\r\nForfatter: Louise, medarbejder på Roskilde Internat\r\n\r\nSøndag formiddag vågnede vi op til solskin og fuglesang – det perfekte vejr til en besøgsdag her på Roskilde Dyreinternat. Allerede fra klokken 10 begyndte de første familier at dukke op med store smil og åbne hjerter, klar til at møde nogle af de dejlige dyr, der venter på deres nye hjem.\r\n\r\nDer var stor interesse for både hundene og kattene – især vores energibundt af en terrier, Buster, som hurtigt charmerede sig ind i hjertet på en børnefamilie fra Køge. I løbet af dagen fik vi også besøg af flere frivillige, som gerne ville høre mere om, hvordan de kan hjælpe – både med daglige opgaver og med kommende aktiviteter som \"Fælles hundeluftning\" og \"Kattens legestue\".\r\n\r\nVi fik snakket med mange søde besøgende, og både dyr og mennesker nød selskabet. Flere kunder bookede opfølgende besøg via vores nye online bookingsystem, som blev taget godt imod – det glæder os at se, at det gør hverdagen nemmere for både jer og os!\r\n\r\nUnder frokosten bød vi på hjemmelavede boller og kaffe – og vores lille maskotkanin Luna hoppede glad rundt mellem bordene, til stor fornøjelse for børnene.\r\n\r\nTak til alle jer, der kiggede forbi og gjorde dagen helt særlig. Og en ekstra tak til vores frivillige og medarbejdere, der sørger for, at både dyr og besøgende føler sig hjemme hos os.\r\n\r\nVi glæder os allerede til næste arrangement – og indtil da, kig gerne forbi bloggen her, hvor vi løbende deler nyheder, historier og små øjeblikke fra livet på internatet 🐶🐱💚\r\n\r\nHar du lyst til at blive frivillig eller booke et besøg? Det kan du nu gøre direkte her på siden!\r\n\r\n";
+
         static void Main(string[] args)
         {
             AktivitetRepo.TilføjAktivitet(new Activity(1, new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "Kom ud og år en masse motion og socialisering med andre hunde og mennesker. God mulighed for at styrke deres adfærd og energi.")) ;
@@ -447,7 +449,30 @@ namespace ConsoleApp
                         
 
                     case 9: // Se og redigere blogindlæg
+                    case 13: // Rediger blog
 
+                        Console.WriteLine("Velkommen til Hillerød Sejlklubs Blog!");
+                        Console.WriteLine("1: Se blogindhold");
+                        Console.WriteLine("2: Rediger blogindhold");
+                        int blogValg = Convert.ToInt32(Console.ReadLine());
+
+                        switch (blogValg)
+                        {
+                            case 1: // Se blogindhold
+                                Console.WriteLine(blogIndhold);
+                                break;
+
+                            case 2: // Rediger blogindhold
+                                Console.WriteLine("Indtast nyt blogindhold:");
+                                blogIndhold = Console.ReadLine();
+                                Console.WriteLine("\nBlogindholdet er blevet opdateret:");
+                                Console.WriteLine(blogIndhold);
+                                break;
+
+                            default:
+                                Console.WriteLine("Ugyldigt valg.");
+                                break;
+                        }
                         break;
 
                      
