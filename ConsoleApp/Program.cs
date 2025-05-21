@@ -16,21 +16,21 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "kom ud og år en masse motion og socialisering med andre hunde og mennesker.God mulighed for at styrke deres adfærd og energi.")) ;
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
-            AktivitetRepo.TilføjAktivitet(new Activity(new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
+            AktivitetRepo.TilføjAktivitet(new Activity(1, new DateOnly(2025, 5, 22), "Fælles HundeLuftning", "Kom ud og år en masse motion og socialisering med andre hunde og mennesker. God mulighed for at styrke deres adfærd og energi.")) ;
+            AktivitetRepo.TilføjAktivitet(new Activity(2, new DateOnly(2025, 6, 15), "Løb I Hamsterhjul", " Kom ud og få motion og stimulering. Aktiviteten holdes under opsyn og indrettes som en del af deres daglige rutine."));
+            AktivitetRepo.TilføjAktivitet(new Activity(3, new DateOnly(2025, 6, 25), "Katten Efter Mussen", " Interaktiv leg hvor katte jagter legetøjsmus på snor eller laserlys. Det aktiverer deres jagtinstinkter og giver dem både fysisk og mental stimulering."));
+            
+            DyrRepository.TilføjDyr(new Dyr(1, "Hund", "Polsk Hund", "Patrick", "3", "Ingen", "Stor", 2002, new DateTime(2020, 1, 1)));
+            DyrRepository.TilføjDyr(new Dyr(2, "Kat", "Afrikansk Kat", "Mohib", "2", "Ingen", "Lille", 2021, new DateTime(2023, 5, 10)));
+            DyrRepository.TilføjDyr(new Dyr(3, "Hamster", "Syrisk", "Adam", "1", "Brun plet", "Lille", 2015, new DateTime(2024, 3, 15)));
 
-            DyrRepository.TilføjDyr(new Dyr("hund","polsk hund","patrick","3","hun",2002,"hvid"));
-            DyrRepository.TilføjDyr(new Dyr("kat", "afrikansk kat","mohib","2","han",1,"sort" ));
-            DyrRepository.TilføjDyr(new Dyr("Hamster", "syriesk", "adam", "1", "han",  2015, "Brun"));
-
-            BrugerRepo.TilføjBruger(new Medarbejder("adam","Adam@gmail.com"," 23252627"));
-            BrugerRepo.TilføjBruger(new Kunde("mohib", "mohib@gmail.com", "27282930"));
-            BrugerRepo.TilføjBruger(new Medarbejder("Patrick", "Patrick@gmail.com"," 23252627"));
+            BrugerRepo.TilføjBruger(new Medarbejder(1, "Adam", "Adam@gmail.com", "23252627"));
+            BrugerRepo.TilføjBruger(new Kunde(2, "Mohib", "mohib@gmail.com", "27282930"));
+            BrugerRepo.TilføjBruger(new Medarbejder(3, "Patrick", "Patrick@gmail.com", "23252627"));
 
             BookingRepo.TilføjBooking(new Booking(1, "Patrick", "Fælles HundeLuftning", new DateOnly(2025, 5, 22)));
-            BookingRepo.TilføjBooking(new Booking(2, "adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
-            BookingRepo.TilføjBooking(new Booking(3, "mohib", "Katten Efter Mussen", new DateOnly(2025, 6, 25)));
+            BookingRepo.TilføjBooking(new Booking(2, "Adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
+            BookingRepo.TilføjBooking(new Booking(3, "Mohib", "Katten Efter Mussen", new DateOnly(2025, 6, 25)));
 
 
             Console.WriteLine("Velkommen til Roskilde Dyreinternat");
@@ -42,28 +42,28 @@ namespace ConsoleApp
                 Console.WriteLine("\nVælg en af valmulighederne");
                 Thread.Sleep(700);
 
-                Console.WriteLine("1: se alle brugere");
+                Console.WriteLine("1: Se alle brugere");
                 Thread.Sleep(200);
 
                 Console.WriteLine("2: Administrer Medarbejder og Kunder");
                 Thread.Sleep(200);
 
-                Console.WriteLine("3: se alle Aktiviter");
+                Console.WriteLine("3: Se alle Aktiviter");
                 Thread.Sleep(200);
 
-                Console.WriteLine("4: tilmeld aktiviteter");
+                Console.WriteLine("4: Tilmeld aktiviteter");
                 Thread.Sleep(200);
 
-                Console.WriteLine("5: se alle dyr");
+                Console.WriteLine("5: Se alle dyr");
                 Thread.Sleep(200);
 
-                Console.WriteLine("6: administre dyr");
+                Console.WriteLine("6: Administre dyr");
                 Thread.Sleep(200);
 
                 Console.WriteLine("7: Book en tid");
                 Thread.Sleep(200);
 
-                Console.WriteLine("8: se og redigere Blogindlæg");
+                Console.WriteLine("8: Se og redigere Blogindlæg");
                 Thread.Sleep(200);
 
 
@@ -77,7 +77,7 @@ namespace ConsoleApp
 
                         if (BrugerRepo.ErTom())
                         {
-                            Console.WriteLine("der er ingen brugere endnu");
+                            Console.WriteLine("Der er ingen brugere endnu");
                         }
                         else
                         {
@@ -91,15 +91,17 @@ namespace ConsoleApp
                         break;
                     case 2: // Administrer medarbejder og kunder
 
-                        Console.WriteLine("1: tiføj medarbejder");
-                        Console.WriteLine("2: tilføj kunde");
+                        Console.WriteLine("1: Tiføj medarbejder");
+                        Console.WriteLine("2: Tilføj kunde");
                         
 
                         int vælg = Convert.ToInt32(Console.ReadLine());
 
                         switch (vælg)
                         {
-                            case 1:
+                            case 1: // Tilføj medarbejder
+                                Console.Write("Indtast id: ");
+                                int medarbejderId = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast navn: ");
                                 string navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
@@ -107,13 +109,15 @@ namespace ConsoleApp
                                 Console.Write("Indtast telefonnummer: ");
                                 string telefonnummer = Console.ReadLine();
 
-                                Medarbejder medarbejder = new Medarbejder(navn, email, telefonnummer);
+                                Medarbejder medarbejder = new Medarbejder(medarbejderId, navn, email, telefonnummer);
                                 BrugerRepo.TilføjBruger(medarbejder);
                                 Console.WriteLine("Medarbejder tilføjet.");
                                 break;
 
 
-                            case 2:
+                            case 2: // Tilføj kunde
+                                Console.Write("Indtast id: ");
+                                int kundeId = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("Indtast navn: ");
                                 string Navn = Console.ReadLine();
                                 Console.Write("Indtast email: ");
@@ -121,7 +125,7 @@ namespace ConsoleApp
                                 Console.Write("Indtast telefonnummer: ");
                                 string Telefonnummer = Console.ReadLine();
 
-                                Kunde kunde1 = new Kunde(Navn, Email,Telefonnummer);
+                                Kunde kunde1 = new Kunde(kundeId, Navn, Email,Telefonnummer);
                                 BrugerRepo.TilføjBruger(kunde1);
                                 Console.WriteLine("Kunde tilføjet.");
                                 break;
@@ -153,7 +157,7 @@ namespace ConsoleApp
                                 item.VisInfo();
 
                             }
-                            Console.WriteLine("\nindtast enten \n1 \n2 \n3");
+                            Console.WriteLine("\nIndtast enten \n1 \n2 \n3");
 
                             int Indtast = Convert.ToInt32(Console.ReadLine());
                             if (BrugerRepo.ErTom())
@@ -173,9 +177,9 @@ namespace ConsoleApp
                                     Console.WriteLine($"{i++}: {item.Navn}");
 
                                 int vælger = Convert.ToInt32(Console.ReadLine());
-                                var valgtBruger = brugere[vælger - 1];
+                                var valgteBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Fælles HundeLufting]");
+                                Console.WriteLine($"{valgteBruger.Navn} Tilmeldt til [Fælles HundeLuftning]");
 
 
                                 Run = false;
@@ -191,9 +195,9 @@ namespace ConsoleApp
                                     Console.WriteLine($"{i++}: {item.Navn}");
 
                                 int vælger = Convert.ToInt32(Console.ReadLine());
-                                var valgtBruger = brugere[vælger - 1];
+                                var valgteBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Løb i HamsterHjul]");
+                                Console.WriteLine($"{valgteBruger.Navn} Tilmeldt til [Løb i HamsterHjul]");
 
                                 Run = false;
                             }
@@ -208,9 +212,9 @@ namespace ConsoleApp
                                     Console.WriteLine($"{i++}: {item.Navn}");
 
                                 int vælger = Convert.ToInt32(Console.ReadLine());
-                                var valgtBruger = brugere[vælger - 1];
+                                var valgteBruger = brugere[vælger - 1];
 
-                                Console.WriteLine($"{valgtBruger.Navn} tilmeldt til [Katten efter Mussen]");
+                                Console.WriteLine($"{valgteBruger.Navn} Tilmeldt til [Katten efter Mussen]");
 
 
                                 Run = false;
@@ -218,7 +222,7 @@ namespace ConsoleApp
                             else
                             {
 
-                                Console.WriteLine("indtast venligst et af de givende tal");
+                                Console.WriteLine("Indtast venligst et af de givende tal");
 
                             }
 
@@ -228,27 +232,202 @@ namespace ConsoleApp
                         break;
 
                     case 5: // Se alle dyr
-
                         foreach (var item in DyrRepository.HentAlleDyr())
                         {
-                            item.VisInfo();
+                            Console.WriteLine(item.ToString());
+                        }
+                        break;
 
+                    case 6: // Administrer dyr
+                        Console.WriteLine("1: Tilføj Dyr");
+                        Console.WriteLine("2: Rediger Dyr");
+                        Console.WriteLine("3: Slet Dyr");
+                        int dyrValg = Convert.ToInt32(Console.ReadLine());
+
+                        switch (dyrValg)
+                        {
+                            case 1:
+                                Console.Write("Indtast id: ");
+                                int id = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("Indtast art: ");
+                                string art = Console.ReadLine();
+                                Console.Write("Indtast race: ");
+                                string race = Console.ReadLine();
+                                Console.Write("Indtast navn: ");
+                                string navn = Console.ReadLine();
+                                Console.Write("Indtast chipnummer: ");
+                                string chipnummer = Console.ReadLine();
+                                Console.Write("Indtast særlige kendetegn: ");
+                                string særligeKendetegn = Console.ReadLine();
+                                Console.Write("Indtast størrelse: ");
+                                string størrelse = Console.ReadLine();
+                                Console.Write("Indtast fødselsår: ");
+                                int fødselsår = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("Indtast ankomstdato (yyyy-mm-dd): ");
+                                DateTime ankomstdato = DateTime.Parse(Console.ReadLine());
+
+                                Dyr nytDyr = new Dyr(id, art, race, navn, chipnummer, særligeKendetegn, størrelse, fødselsår, ankomstdato);
+                                DyrRepository.TilføjDyr(nytDyr);
+                                Console.WriteLine("Dyr tilføjet.");
+                                break;
+
+                            case 2: // Rediger Dyr
+                                Console.Write("Indtast id på dyret der skal redigeres: ");
+                                int redigerId = Convert.ToInt32(Console.ReadLine());
+                                var dyrListe = DyrRepository.HentAlleDyr();
+                                Dyr dyrAtRedigere = null;
+                                foreach (var dyr in dyrListe)
+                                {
+                                    if (dyr.Id == redigerId)
+                                    {
+                                        dyrAtRedigere = dyr;
+                                        break;
+                                    }
+                                }
+                                if (dyrAtRedigere != null)
+                                {
+                                    Console.Write("Nyt navn (lad tom for ingen ændring): ");
+                                    string nytNavn = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytNavn)) dyrAtRedigere.Navn = nytNavn;
+
+                                    Console.Write("Ny art (lad tom for ingen ændring): ");
+                                    string nyArt = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyArt)) dyrAtRedigere.Art = nyArt;
+
+                                    Console.Write("Ny race (lad tom for ingen ændring): ");
+                                    string nyRace = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyRace)) dyrAtRedigere.Race = nyRace;
+
+                                    Console.Write("Nyt chipnummer (lad tom for ingen ændring): ");
+                                    string nytChipnummer = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytChipnummer)) dyrAtRedigere.Chipnummer = nytChipnummer;
+
+                                    Console.Write("Nye særlige kendetegn (lad tom for ingen ændring): ");
+                                    string nyeKendetegn = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyeKendetegn)) dyrAtRedigere.SærligeKendetegn = nyeKendetegn;
+
+                                    Console.Write("Ny størrelse (lad tom for ingen ændring): ");
+                                    string nyStørrelse = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyStørrelse)) dyrAtRedigere.Størrelse = nyStørrelse;
+
+                                    Console.Write("Nyt fødselsår (lad tom for ingen ændring): ");
+                                    string nytFødselsår = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nytFødselsår))
+                                    {
+                                        int nytfødselsår;
+                                        if (int.TryParse(nytFødselsår, out fødselsår)) dyrAtRedigere.Fødselsår = fødselsår;
+                                    }
+
+                                    Console.Write("Ny ankomstdato (yyyy-mm-dd, lad tom for ingen ændring): ");
+                                    string nyAnkomstdato = Console.ReadLine();
+                                    if (!string.IsNullOrWhiteSpace(nyAnkomstdato))
+                                    {
+                                        DateTime ankomstdatoVal;
+                                        if (DateTime.TryParse(nyAnkomstdato, out ankomstdatoVal)) dyrAtRedigere.Ankomstdato = ankomstdatoVal;
+                                    }
+
+                                    Console.WriteLine("Dyret er opdateret.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Dyr med det id blev ikke fundet.");
+                                }
+                                break;
+                            case 3: // Slet Dyr
+                                Console.Write("Indtast id på dyret der skal slettes: ");
+                                int sletId = Convert.ToInt32(Console.ReadLine());
+                                var dyrListe2 = DyrRepository.HentAlleDyr();
+                                Dyr dyrAtSlette = null;
+                                foreach (var dyr in dyrListe2)
+                                {
+                                    if (dyr.Id == sletId)
+                                    {
+                                        dyrAtSlette = dyr;
+                                        break;
+                                    }
+                                }
+                                if (dyrAtSlette != null)
+                                {
+                                    DyrRepository.SletDyr(dyrAtSlette);
+                                    Console.WriteLine("Dyret er slettet.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Dyr med det id blev ikke fundet.");
+                                }
+                                break;
+                            default:
+                                Console.WriteLine("Ugyldigt valg.");
+                                break;
+                        }
+                        break;
+
+                    case 7: // Book en tid
+                        Console.WriteLine("Vælg en bruger til booking (indtast ID):");
+                        var brugereTilBooking = BrugerRepo.HentAlleBrugere();
+                        for (int i = 0; i < brugereTilBooking.Count; i++)
+                        {
+                            Console.WriteLine($"ID: {brugereTilBooking[i].Id}, Navn: {brugereTilBooking[i].Navn}");
+                        }
+                        int brugerId = Convert.ToInt32(Console.ReadLine());
+                        Bruger valgtBruger = null;
+                        for (int i = 0; i < brugereTilBooking.Count; i++)
+                        {
+                            if (brugereTilBooking[i].Id == brugerId)
+                            {
+                                valgtBruger = brugereTilBooking[i];
+                                break;
+                            }
+                        }
+                        if (valgtBruger == null)
+                        {
+                            Console.WriteLine("Bruger med det ID blev ikke fundet.");
+                            break;
                         }
 
+                        // Vis alle dyr med ID
+                        Console.WriteLine("Vælg et dyr at booke tid hos (indtast ID):");
+                        var dyrListeBooking = DyrRepository.HentAlleDyr();
+                        for (int i = 0; i < dyrListeBooking.Count; i++)
+                        {
+                            Console.WriteLine($"ID: {dyrListeBooking[i].Id}, Navn: {dyrListeBooking[i].Navn}, Art: {dyrListeBooking[i].Art}, Race: {dyrListeBooking[i].Race}");
+                        }
+                        int dyrId = Convert.ToInt32(Console.ReadLine());
+                        Dyr valgtDyr = null;
+                        for (int i = 0; i < dyrListeBooking.Count; i++)
+                        {
+                            if (dyrListeBooking[i].Id == dyrId)
+                            {
+                                valgtDyr = dyrListeBooking[i];
+                                break;
+                            }
+                        }
+                        if (valgtDyr == null)
+                        {
+                            Console.WriteLine("Dyr med det ID blev ikke fundet.");
+                            break;
+                        }
+
+                        // Vælg dato for booking
+                        Console.Write("Indtast dato for booking (yyyy-mm-dd): ");
+                        string datoInput = Console.ReadLine();
+                        DateTime bookingDato;
+                        if (!DateTime.TryParse(datoInput, out bookingDato))
+                        {
+                            Console.WriteLine("Ugyldigt datoformat.");
+                            break;
+                        }
+
+                        // Opret booking
+                        int nyBookingId = BookingRepo.HentAlleBookings().Count + 1;
+                        Booking nyBooking = new Booking(nyBookingId, valgtBruger.Navn, valgtDyr.Navn, DateOnly.FromDateTime(bookingDato));
+                        BookingRepo.TilføjBooking(nyBooking);
+
+                        Console.WriteLine($"Booking oprettet for {valgtBruger.Navn} hos dyret '{valgtDyr.Navn}' den {bookingDato:dd-MM-yyyy}.");
                         break;
+                        
 
-                    case 6:
-                        Console.WriteLine("1: tilføj Dyr");
-                        Console.WriteLine("2: rediger Dyr");
-                        Console.WriteLine("3: slet Dyr");
-
-                        break;
-
-                    case 7:
-
-                        break;
-
-                    case 8:
+                    case 8: // Se og redigere blogindlæg
 
                         break;
 
