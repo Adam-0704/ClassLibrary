@@ -32,7 +32,7 @@ namespace ConsoleApp
             BookingRepo.TilføjBooking(new Booking(2, "Adam", "Løb I Hamsterhjul", new DateOnly(2025, 6, 15)));
             BookingRepo.TilføjBooking(new Booking(3, "Mohib", "Katten Efter Mussen", new DateOnly(2025, 6, 25)));
 
-
+            
             Console.WriteLine("Velkommen til Roskilde Dyreinternat");
             bool running = true;
 
@@ -60,10 +60,13 @@ namespace ConsoleApp
                 Console.WriteLine("6: Administre dyr");
                 Thread.Sleep(200);
 
-                Console.WriteLine("7: Book en tid");
+                Console.WriteLine("7: Se Bookinger");
                 Thread.Sleep(200);
 
-                Console.WriteLine("8: Se og redigere Blogindlæg");
+                Console.WriteLine("8: Book en tid hos et dyr");
+                Thread.Sleep(200);
+
+                Console.WriteLine("9: Se og redigere Blogindlæg");
                 Thread.Sleep(200);
 
 
@@ -362,7 +365,23 @@ namespace ConsoleApp
                         }
                         break;
 
-                    case 7: // Book en tid
+                    case 7: //Se Bookininger
+
+                        if (BookingRepo.HentAlleBookings().Count == 0)
+                        {
+                            Console.WriteLine("Der er ingen bookinger endnu.");
+                        }
+                        else
+                        {
+                            foreach (var booking in BookingRepo.HentAlleBookings())
+                            {
+                                Console.WriteLine($"Booking ID: {booking.Id}, Bruger: {booking.BrugerNavn}, Dyr/Aktivitet: {booking.AktivitetNavn}, Dato: {booking.Dato:dd-MM-yyyy}");
+                            }
+                        }
+                        break;
+
+
+                    case 8: // Book en tid
                         Console.WriteLine("Vælg en bruger til booking (indtast ID):");
                         var brugereTilBooking = BrugerRepo.HentAlleBrugere();
                         for (int i = 0; i < brugereTilBooking.Count; i++)
@@ -427,7 +446,7 @@ namespace ConsoleApp
                         break;
                         
 
-                    case 8: // Se og redigere blogindlæg
+                    case 9: // Se og redigere blogindlæg
 
                         break;
 

@@ -16,8 +16,8 @@ namespace RazorPage.Pages
 
             if (Repo.ErTom())
             {
-                Repo.TilføjBruger(new Medarbejder("adam", "adam@gmail.com", "12345678"));
-                Repo.TilføjBruger(new Kunde("mohib", "mohib@gmail.com", "87654321"));
+                Repo.TilføjBruger(new Medarbejder(1,"adam", "adam@gmail.com", "12345678"));
+                Repo.TilføjBruger(new Kunde(2,"mohib", "mohib@gmail.com", "87654321"));
             }
             BrugerListe = Repo.HentAlleBrugere();
         }
