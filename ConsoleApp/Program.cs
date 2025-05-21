@@ -448,8 +448,7 @@ namespace ConsoleApp
                         break;
                         
 
-                    case 9: // Se og redigere blogindlæg
-                    case 13: // Rediger blog
+                    case 9: // Se og redigere 
 
                         Console.WriteLine("Velkommen til Hillerød Sejlklubs Blog!");
                         Console.WriteLine("1: Se blogindhold");
