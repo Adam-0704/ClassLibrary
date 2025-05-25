@@ -564,7 +564,7 @@ namespace ConsoleApp
 
                     case 9: // Se og redigere 
 
-                        Console.WriteLine("Velkommen til Hillerød Sejlklubs Blog!");
+                        Console.WriteLine("Velkommen til Roskilde Dyreinternat");
                         Console.WriteLine("1: Se blogindhold");
                         Console.WriteLine("2: Rediger blogindhold");
                         int blogValg = Convert.ToInt32(Console.ReadLine());
